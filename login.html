@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="container">
+        <form class="signin form"></form>
+
+        <div class="quick-links">
+            <a href="">Forgot Password</a>
+            <a href="" id="create">Create new account</a>
+        </div>
+    </div>
+
+    <script>
+
+        // global variables
+        const form = document.querySelector(".form");
+        const quickLinks = document.querySelector(".quick-links")
+        const create = document.querySelector("#create")
+        var isSignin = true;
+
+        // swap the divs
+        create.addEventListener('click', (event) => {
+            event.preventDefault(); 
+
+            form.classList.toggle("swap");
+            quickLinks.classList.toggle("swap");
+
+            form.innerHTML = "";
+
+            if(isSignin){
+                createElementSignup();
+            } else{
+                createElementLogin();
+            }
+
+            isSignin = !isSignin
+
+            create.innerHTML = isSignin ? "Create new account" : "Sign In";
+
+        });
+
+        // function to create elements inside the form
+        const createElementLogin = () => {
+
+            // creating and inserting h2 title
+            const header = document.createElement("div");
+            header.className = "trans";
+            const h2 = document.createElement("h2");
+            h2.innerHTML = "Sign In";
+            header.appendChild(h2);
+            form.insertBefore(header, form.firstChild);
+
+            // creating and inserting input
+            for(let i = 0; i < 3; i++){
+                const div = document.createElement("div");
+                const input = document.createElement("input");
+                div.appendChild(input);
+                form.appendChild(div, form.firstChild);
+
+                // adding placeholders
+                if(i === 0){
+                    input.setAttribute("placeholder", "Username");
+                } else if(i === 1){
+                    input.setAttribute("placeholder", "Password");
+                    input.setAttribute("type", "password");
+                    input.setAttribute("id", "password");
+
+                    // add an eye
+                    const eye = document.createElement("i");
+                    eye.classList.add("fa", "fa-eye");
+                    div.appendChild(eye);
+                }
+                else{
+                    input.setAttribute("type", "button");
+                    input.setAttribute("Value", "Sign In");
+                }
+            }
+
+            // add remember me
+            const remember = document.createElement("div");
+            remember.className = "remember";
+
+            const checkbox = document.createElement("input");
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("id", "remember");
+
+            const label = document.createElement("label");
+            label.setAttribute("for", "remember");
+
+            const p = document.createElement("p");
+            p.innerHTML = "Remember me";
+
+            remember.appendChild(checkbox);
+            remember.appendChild(label);
+            remember.appendChild(p);
+            form.appendChild(remember);
+
+            // Add the 'added' class to the elements for transition
+            const elements = form.querySelectorAll('div');
+            elements.forEach(element => {
+                element.classList.add('trans');
+            });
+
+            setTimeout(() => {
+                header.classList.remove("trans");
+                header.classList.add("trans-in");
+
+                elements.forEach(element => {
+                element.classList.remove('trans');
+                element.classList.add('trans-in');
+            });
+            }, 100);
+        }
+
+
+        const createElementSignup = () => {
+
+            form.innerHTML = "";
+
+            // creating and inserting h2 title
+            const header = document.createElement("div");
+            header.className = "trans";
+            const h2 = document.createElement("h2");
+            h2.innerHTML = "Sign Up";
+            header.appendChild(h2);
+            form.insertBefore(header, form.firstChild);
+
+            // creating and inserting input
+            for(let i = 0; i < 5; i++){
+                const div = document.createElement("div");
+                const input = document.createElement("input");
+                div.appendChild(input);
+                form.appendChild(div, form.firstChild);
+
+                // adding placeholders
+                if(i === 0){
+                    input.setAttribute("placeholder", "Username");
+                } else if(i === 1){
+                    input.setAttribute("placeholder", "Email");
+                }
+                else if(i === 2){
+                    input.setAttribute("placeholder", "Password");
+                }
+                else if(i === 3){
+                    input.setAttribute("placeholder", "Confirm Password");
+                }
+                else{
+                    input.setAttribute("type", "button");
+                    input.setAttribute("Value", "Sign Up");
+                }
+            }
+            
+
+            // Add the 'added' class to the elements for transition
+            const elements = form.querySelectorAll('div');
+            elements.forEach(element => {
+                element.classList.add('trans');
+            });
+
+            setTimeout(() => {
+                header.classList.remove("trans");
+                header.classList.add("trans-in");
+
+                elements.forEach(element => {
+                element.classList.remove('trans');
+                element.classList.add('trans-in');
+            });
+            }, 100);
+            
+        }
+
+        // call the login function elements by default
+        createElementLogin();
+
+        // deal with the eye click
+        const eye = document.querySelector(".fa-eye");
+        const password = document.querySelector("#password");
+        eye.onclick = () => {
+            if(password.type == "password"){
+                password.type = "text";
+                eye.classList.add("fa-eye-slash");
+                eye.classList.remove("fa-eye");
+            }else{
+                password.type = "password";
+                eye.classList.add("fa-eye");
+                eye.classList.remove("fa-eye-slash");
+            }
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
+
+

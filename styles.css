@@ -1,0 +1,187 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root{
+    --dark-color: #1C2120; 
+    --light-color: #fff;
+    --red-color: #ff3131;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-color);   
+    color: var(--light-color);
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px var(--red-color);
+    max-width: 500px;
+    margin: 0 20px;
+    padding: 0 20px 0 30px;
+    gap: 30px;
+}
+
+.container form.swap{
+    transform: translateX(55%);
+    transition: transform .5s ease-in-out;
+}
+
+.container > div.swap{
+    transform: translateX(-260%);
+    transition: transform .5s ease-in-out;
+}
+
+.form{
+    max-width: 500px;
+    background: var(--dark-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--red-color);
+    padding: 10px;
+    text-align: center;
+    color: var(-light-color);
+    transition: .5s;
+    z-index: 2;
+}
+
+.trans{
+    transform: scale(0);
+}
+
+.trans-in{
+    transform: scale(1);
+    transition: transform .5s ease-in-out;
+}
+
+.form h2{
+    font-size: 30px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.form input{
+    position: relative;
+    width: 100%;
+    margin: 10px auto;
+    background: transparent;
+    border: 1px solid var(--light-color);
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--light-color);
+    transition: .3s ease-in-out;
+}
+
+form div{
+    margin: 10px;
+    position: relative;
+}
+
+form  div i{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form input:focus:not([type="button"], [type="checkbox"]){
+    box-shadow: 0 0 10px var(--red-color);
+    border: 1px solid var(--red-color);
+}
+
+.form input[type="button"]{
+    background: var(--light-color);
+    border-radius: 10px;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+.form input[type="button"]:hover{
+    background: var(--red-color);
+    color: var(--light-color);
+}
+
+form .remember{
+    display: flex;
+    align-items: center;
+}
+
+.form .remember input{
+    display: none;
+}
+
+.form .remember label{
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    margin: 0 10px;
+    background: var(--light-color);
+    border-radius: 10px;
+}
+
+.form .remember label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background: var(--dark-color);
+    border-radius: 50%;
+    transition: .3s ease-in-out;
+}
+
+.form .remember input:checked ~ label::after{
+    left: 13px;
+    background: var(--red-color);
+}
+
+.quick-links{
+    transition: transform .5s ease-in-out;
+}
+
+.quick-links a{
+    color: var(--light-color);
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.quick-links a:last-child{
+    font-size: 10px;
+    border: 1px solid var(--light-color);
+    transition: .3s ease-in-out;
+}
+
+.quick-links a:last-child:hover{
+    background: var(--light-color);
+    color: var(--dark-color);
+}
