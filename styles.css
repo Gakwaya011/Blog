@@ -23,8 +23,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 100vh;
+    margin: 0 10px;
 }
+
 
 .container{
     position: relative;
@@ -36,9 +39,13 @@ body{
     align-items: center;
     box-shadow: 0 0 10px var(--red-color);
     max-width: 500px;
-    margin: 0 20px;
-    padding: 0 20px 0 30px;
-    gap: 30px;
+    gap: 20px;
+}
+
+.container-mobile{
+    width: fit-content;
+    padding: 0;
+    margin: 0;
 }
 
 .container form.swap{
@@ -61,6 +68,13 @@ body{
     color: var(-light-color);
     transition: .5s;
     z-index: 2;
+    transform: rotateY(0);
+}
+
+.hr{
+    width: 90%;
+    background: var(--light-color);
+    margin: 30px auto 10px;
 }
 
 .trans{
@@ -184,4 +198,81 @@ form .remember{
 .quick-links a:last-child:hover{
     background: var(--light-color);
     color: var(--dark-color);
+}
+
+
+
+#back{
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    color: var(--light-color);
+    border-radius: 5px;
+    background: none;
+    border: 1px solid var(--red-color);
+    cursor: pointer;
+    transition: .3s ease;
+    height: fit-content;
+    width: fit-content;
+}
+
+.back{
+    padding: 10px 20px 10px 10px;
+    font-size: 10px;
+    color: var(--light-color);
+    border-radius: 5px;
+    background: none;
+    border: 1px solid var(--red-color);
+    cursor: pointer;
+    transition: .3s ease;
+    height: fit-content;
+    width: fit-content;
+    margin: 20px 0 0;
+}
+
+.back i{
+    margin: 0 5px 0 0;
+    font-size: 14px;
+}
+
+
+#back:hover{
+    color: var(--dark-color);
+    background: var(--light-color);
+}
+
+.message{
+    color: var(--red-color);
+    margin: 10px 0;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    background: var(--dark-color);
+    scale: 0;
+    transition: .3s;
+}
+
+
+@media screen and (max-height: 500px) {
+    button{
+        display: none;
+    }
+    form{
+        margin: 20px 0;
+    }
+}
+
+
+@media screen and (max-width: 300px) {
+    .message{
+        scale: 1;
+    }
+    
 }

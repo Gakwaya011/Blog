@@ -13,17 +13,27 @@
         <form class="signin form"></form>
 
         <div class="quick-links">
-            <a href="">Forgot Password</a>
+            <a id="forgot" href="">Forgot Password</a>
             <a href="" id="create">Create new account</a>
         </div>
+    </div>
+
+    <button id="back"><i class="fa-solid fa-angles-left"></i> Back to home</button>
+
+     <!-- a message to display when the screen is too small  -->
+    <div class="message">
+        <p>Screen too small. Please use a larger screen.</p>
     </div>
 
     <script>
 
         // global variables
         const form = document.querySelector(".form");
+        const container = document.querySelector(".container");
         const quickLinks = document.querySelector(".quick-links")
         const create = document.querySelector("#create")
+        const backButton = document.querySelector("#back")
+        const forgot = document.querySelector("#forgot")
         var isSignin = true;
 
         // swap the divs
@@ -37,8 +47,10 @@
 
             if(isSignin){
                 createElementSignup();
+                forgot.innerHTML = "Help & Support";
             } else{
                 createElementLogin();
+                forgot.innerHTML = "Forgot Password";
             }
 
             isSignin = !isSignin
@@ -177,7 +189,7 @@
             
         }
 
-        // call the login function elements by default
+        // call the login function elements by default when the screen is big
         createElementLogin();
 
         // deal with the eye click
@@ -194,6 +206,243 @@
                 eye.classList.remove("fa-eye-slash");
             }
         }
+
+
+        //  mobile version
+
+        // change the form using this function
+        const changeForm = () => {
+            form.style.transition = "1s";
+
+            if(form.style.transform == "rotateY(360deg)"){
+                form.style.transform = "rotateY(0)";
+                createElementLoginMobile();
+            }
+            else{
+                form.style.transform = "rotateY(360deg)";
+                createElementSignupMobile();
+            }
+
+            }
+
+        // function to create the form
+        const createElementLoginMobile = () => {
+            form.innerHTML = "";
+
+            // creating and inserting h2 title
+            const header = document.createElement("div");
+            header.className = "trans";
+            const h2 = document.createElement("h2");
+            h2.innerHTML = "Sign In";
+            header.appendChild(h2);
+            form.insertBefore(header, form.firstChild);
+
+            // creating and inserting input
+            for(let i = 0; i < 3; i++){
+                const div = document.createElement("div");
+                const input = document.createElement("input");
+                div.appendChild(input);
+                form.appendChild(div, form.firstChild);
+
+                // adding placeholders
+                if(i === 0){
+                    input.setAttribute("placeholder", "Username");
+                } else if(i === 1){
+                    input.setAttribute("placeholder", "Password");
+                    input.setAttribute("type", "password");
+                    input.setAttribute("id", "password");
+
+                    // add an eye
+                    const eye = document.createElement("i");
+                    eye.classList.add("fa", "fa-eye");
+                    div.appendChild(eye);
+                }
+                else{
+                    input.setAttribute("type", "button");
+                    input.setAttribute("Value", "Sign In");
+                }
+            }
+
+            // add remember me
+            const remember = document.createElement("div");
+            remember.className = "remember";
+
+            const checkbox = document.createElement("input");
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("id", "remember");
+
+            const label = document.createElement("label");
+            label.setAttribute("for", "remember");
+
+            const p = document.createElement("p");
+            p.innerHTML = "Remember me";
+
+            remember.appendChild(checkbox);
+            remember.appendChild(label);
+            remember.appendChild(p);
+            form.appendChild(remember);
+
+            // create a separater line
+            const hr = document.createElement("hr");
+            hr.className = "hr";
+            form.appendChild(hr);
+
+            // create quick links
+            const quickLinks = document.createElement("div");
+            quickLinks.className = "quick-links";
+
+            const a1 = document.createElement("a");
+            a1.innerHTML = "Forgot Password";
+
+            const a2 = document.createElement("a");
+            a2.setAttribute("id", "toSignup");
+            a2.setAttribute("onclick", "changeForm()");
+            a2.innerHTML = "Create an Account";
+
+            quickLinks.appendChild(a1);
+            quickLinks.appendChild(a2);
+            form.appendChild(quickLinks);
+
+            // create the go back button
+            const backButton = document.createElement("button");
+            const buttonIcon = document.createElement("i");
+            buttonIcon.className = "fa-solid fa-reply";
+            backButton.className = "back";
+            backButton.innerHTML = "Go Back To Home";
+            backButton.insertBefore(buttonIcon, backButton.firstChild);
+            form.appendChild(backButton);
+
+            // Add the 'added' class to the elements for transition
+            const elements = form.querySelectorAll('div');
+            elements.forEach(element => {
+                element.classList.add('trans');
+            });
+
+            setTimeout(() => {
+                header.classList.remove("trans");
+                header.classList.add("trans-in");
+
+                elements.forEach(element => {
+                element.classList.remove('trans');
+                element.classList.add('trans-in');
+            });
+            }, 100);
+        }
+
+        const createElementSignupMobile = () => {
+            form.innerHTML = "";
+
+            // creating and inserting h2 title
+            const header = document.createElement("div");
+            header.className = "trans";
+            const h2 = document.createElement("h2");
+            h2.innerHTML = "Sign Up";
+            header.appendChild(h2);
+            form.insertBefore(header, form.firstChild);
+
+            // creating and inserting input
+            for(let i = 0; i < 5; i++){
+                const div = document.createElement("div");
+                const input = document.createElement("input");
+                div.appendChild(input);
+                form.appendChild(div, form.firstChild);
+
+                // adding placeholders
+                if(i === 0){
+                    input.setAttribute("placeholder", "Username");
+                } else if(i === 1){
+                    input.setAttribute("placeholder", "Email");
+                }
+                else if(i === 2){
+                    input.setAttribute("placeholder", "Password");
+                }
+                else if(i === 3){
+                    input.setAttribute("placeholder", "Confirm Password");
+                }
+                else{
+                    input.setAttribute("type", "button");
+                    input.setAttribute("Value", "Sign Up");
+                }
+            }
+
+
+            // create quick links
+            const quickLinks = document.createElement("div");
+            quickLinks.className = "quick-links";
+
+            const a1 = document.createElement("a");
+            a1.innerHTML = "Help & Support";
+
+            const a2 = document.createElement("a");
+            a2.setAttribute("id", "toSignin");
+            a2.setAttribute("onclick", "changeForm()");
+            a2.innerHTML = "Login";
+
+            quickLinks.appendChild(a1);
+            quickLinks.appendChild(a2);
+            form.appendChild(quickLinks);
+
+            // create the go back button
+            const backButton = document.createElement("button");
+            const buttonIcon = document.createElement("i");
+            buttonIcon.className = "fa-solid fa-reply";
+            backButton.className = "back";
+            backButton.innerHTML = "Go Back To Home";
+            backButton.insertBefore(buttonIcon, backButton.firstChild);
+            form.appendChild(backButton);
+
+            // Add the 'added' class to the elements for transition
+            const elements = form.querySelectorAll('div');
+            elements.forEach(element => {
+                element.classList.add('trans');
+            });
+
+            setTimeout(() => {
+                header.classList.remove("trans");
+                header.classList.add("trans-in");
+
+                elements.forEach(element => {
+                element.classList.remove('trans');
+                element.classList.add('trans-in');
+            });
+            }, 100);
+        }
+
+        const screen = window.matchMedia('(max-width: 600px)');
+        screen.addListener(checkScreen)
+
+        function checkScreen(screen) {
+            if(screen.matches){
+                backButton.style.display = "none";
+                container.classList.remove("container");
+                container.classList.add("container-mobile");
+
+                form.innerHTML = "";
+                quickLinks.style.display = "none"
+
+                // createElementSignupMobile()
+                createElementLoginMobile()
+            }
+
+            else{
+                backButton.style.display = "block";
+                container.classList.remove("container-mobile");
+                container.classList.add("container");
+                quickLinks.style.display = "block"
+                quickLinks.classList.remove("swap")
+                forgot.innerHTML = "Forgot Password";
+
+                form.innerHTML = ""
+                form.classList.remove("swap")
+                form.removeAttribute("style")
+
+                createElementLogin();
+                
+            }
+
+        }
+
+        checkScreen(screen)
 
 
 
