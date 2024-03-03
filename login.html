@@ -88,6 +88,9 @@
                     // add an eye
                     const eye = document.createElement("i");
                     eye.classList.add("fa", "fa-eye");
+                    eye.onclick = () => {
+                        eyeClick(input)
+                    }
                     div.appendChild(eye);
                 }
                 else{
@@ -192,20 +195,7 @@
         // call the login function elements by default when the screen is big
         createElementLogin();
 
-        // deal with the eye click
-        const eye = document.querySelector(".fa-eye");
-        const password = document.querySelector("#password");
-        eye.onclick = () => {
-            if(password.type == "password"){
-                password.type = "text";
-                eye.classList.add("fa-eye-slash");
-                eye.classList.remove("fa-eye");
-            }else{
-                password.type = "password";
-                eye.classList.add("fa-eye");
-                eye.classList.remove("fa-eye-slash");
-            }
-        }
+        
 
 
         //  mobile version
@@ -255,6 +245,9 @@
                     // add an eye
                     const eye = document.createElement("i");
                     eye.classList.add("fa", "fa-eye");
+                    eye.onclick = () => {
+                        eyeClick(input)
+                    }
                     div.appendChild(eye);
                 }
                 else{
@@ -445,6 +438,24 @@
         checkScreen(screen)
 
 
+        // deal with the eye click
+        const eye = document.querySelector(".fa-eye");
+        
+        const eyeClick = (input) => {
+            const password = input;
+            if(password.type == "password"){
+                password.type = "text";
+                eye.classList.add("fa-eye-slash");
+                eye.classList.remove("fa-eye");
+            }else{
+                password.type = "password";
+                eye.classList.add("fa-eye");
+                eye.classList.remove("fa-eye-slash");
+            }
+        }
+        // eye.onclick = () => {
+        //     eyeClick();
+        // }
 
     </script>
     

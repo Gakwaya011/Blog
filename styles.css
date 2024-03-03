@@ -187,6 +187,7 @@ form .remember{
     margin: 10px 0;
     font-size: 12px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .quick-links a:last-child{
@@ -245,9 +246,8 @@ form .remember{
 
 .message{
     color: var(--red-color);
-    margin: 10px 0;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     position: absolute;
     display: flex;
     align-items: center;
