@@ -260,6 +260,13 @@ form .remember{
 }
 
 
+.fa-exclamation-triangle{
+    color: var(--red-color);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
 @media screen and (max-height: 500px) {
     button{
         display: none;

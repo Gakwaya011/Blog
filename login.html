@@ -36,6 +36,7 @@
         const forgot = document.querySelector("#forgot")
         var isSignin = true;
 
+        
         // swap the divs
         create.addEventListener('click', (event) => {
             event.preventDefault(); 
@@ -78,12 +79,28 @@
                 form.appendChild(div, form.firstChild);
 
                 // adding placeholders
-                if(i === 0){
+                if (i === 0) {
                     input.setAttribute("placeholder", "Username");
-                } else if(i === 1){
+                    var usernameInput = input; // Store the input element
+                    var cont1 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
+
+                } else if (i === 1) {
                     input.setAttribute("placeholder", "Password");
                     input.setAttribute("type", "password");
                     input.setAttribute("id", "password");
+                    var passwordInput = input
+                    var cont2 = div
 
                     // add an eye
                     const eye = document.createElement("i");
@@ -92,11 +109,30 @@
                         eyeClick(input)
                     }
                     div.appendChild(eye);
-                }
-                else{
+                    
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i.fa-exclamation-triangle")){
+                                    div.appendChild(eye);
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
+                } else {
                     input.setAttribute("type", "button");
                     input.setAttribute("Value", "Sign In");
+                    // Store username and password as properties of the button
+                    username = usernameInput;
+                    password = passwordInput;
+                    input.addEventListener("click", function() {
+                        // Access username and password from button properties
+                        loginValidate(username, password, cont1, cont2)
+                    });
                 }
+
             }
 
             // add remember me
@@ -133,6 +169,7 @@
                 element.classList.add('trans-in');
             });
             }, 100);
+
         }
 
 
@@ -158,18 +195,80 @@
                 // adding placeholders
                 if(i === 0){
                     input.setAttribute("placeholder", "Username");
+                    var usernameInput = input
+                    var cont1 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 } else if(i === 1){
                     input.setAttribute("placeholder", "Email");
+                    var emailInput = input
+                    var cont2 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else if(i === 2){
                     input.setAttribute("placeholder", "Password");
+                    var passwordInput = input
+                    var cont3 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else if(i === 3){
-                    input.setAttribute("placeholder", "Confirm Password");
+                    input.setAttribute("placeholder", "Confirm");
+                    var confirmInput = input
+                    var cont4 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else{
                     input.setAttribute("type", "button");
                     input.setAttribute("Value", "Sign Up");
+
+                    // Store username and password as properties of the button
+                    username = usernameInput;
+                    email = emailInput;
+                    password = passwordInput;
+                    confirmPass = confirmInput;
+                    input.addEventListener("click", function() {
+                        // Access username and password from button properties
+                        signupValidate(username, email, password, confirmPass, cont1, cont2, cont3, cont4)
+                    });
                 }
             }
             
@@ -192,10 +291,8 @@
             
         }
 
-        // call the login function elements by default when the screen is big
-        createElementLogin();
 
-        
+
 
 
         //  mobile version
@@ -215,7 +312,7 @@
 
             }
 
-        // function to create the form
+        // function to create the mobile login form
         const createElementLoginMobile = () => {
             form.innerHTML = "";
 
@@ -237,10 +334,25 @@
                 // adding placeholders
                 if(i === 0){
                     input.setAttribute("placeholder", "Username");
+                    var usernameInput = input
+                    var cont1 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 } else if(i === 1){
                     input.setAttribute("placeholder", "Password");
                     input.setAttribute("type", "password");
                     input.setAttribute("id", "password");
+                    var passwordInput = input
+                    var cont2 = div
 
                     // add an eye
                     const eye = document.createElement("i");
@@ -249,10 +361,30 @@
                         eyeClick(input)
                     }
                     div.appendChild(eye);
+                    
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i.fa-exclamation-triangle")){
+                                    div.appendChild(eye);
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else{
                     input.setAttribute("type", "button");
                     input.setAttribute("Value", "Sign In");
+
+                    // Store username and password as properties of the button
+                    username = usernameInput;
+                    password = passwordInput;
+                    input.addEventListener("click", function() {
+                        // Access username and password from button properties
+                        loginValidate(username, password, cont1, cont2)
+                    });
                 }
             }
 
@@ -322,6 +454,7 @@
             }, 100);
         }
 
+        // function to create the mobile login form
         const createElementSignupMobile = () => {
             form.innerHTML = "";
 
@@ -343,18 +476,80 @@
                 // adding placeholders
                 if(i === 0){
                     input.setAttribute("placeholder", "Username");
+                    var usernameInput = input
+                    var cont1 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 } else if(i === 1){
                     input.setAttribute("placeholder", "Email");
+                    var emailInput = input
+                    var cont2 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else if(i === 2){
                     input.setAttribute("placeholder", "Password");
+                    var passwordInput = input
+                    var cont3 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else if(i === 3){
-                    input.setAttribute("placeholder", "Confirm Password");
+                    input.setAttribute("placeholder", "Confirm");
+                    var confirmInput = input
+                    var cont4 = div
+
+                    // this is to remove the exclamation mark afer keyup
+                    input.addEventListener("keyup", (event) => {
+                        if (input.value != ""){
+                            if (event.key !== "Enter"){
+                                if(div.querySelector("i")){
+                                    div.querySelector("i").remove();
+                                }
+                            }
+                        }
+                    })
                 }
                 else{
                     input.setAttribute("type", "button");
                     input.setAttribute("Value", "Sign Up");
+
+                    // Store username and password as properties of the button
+                    username = usernameInput;
+                    email = emailInput;
+                    password = passwordInput;
+                    confirmPass = confirmInput;
+                    input.addEventListener("click", function() {
+                        // Access username and password from button properties
+                        signupValidate(username, email, password, confirmPass, cont1, cont2, cont3, cont4)
+                    });
                 }
             }
 
@@ -453,9 +648,98 @@
                 eye.classList.remove("fa-eye-slash");
             }
         }
-        // eye.onclick = () => {
-        //     eyeClick();
-        // }
+
+
+                
+        // some validation shit
+        const loginValidate = (username, password, cont1, cont2) => {
+
+            
+
+            if(username.value == ""){
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                cont1.appendChild(i)
+                username.focus()
+                i.setAttribute("title", "Username required")
+            }
+            else if(password.value == ""){
+                const prevI = cont2.querySelector("i")
+                if(prevI){
+                    prevI.remove()
+                }
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                i.setAttribute("title", "password required")
+                cont2.appendChild(i)
+                password.focus()                
+            }
+            else{
+                if(username.value == "Admin" || username.value == "admin"){
+                    if(password.value == "Admin" || password.value == "admin"){
+                        alert("did it!")
+                    }
+                    else{
+                        const prevI = cont2.querySelector("i")
+                        if(prevI){
+                            prevI.remove()
+                        }
+                        const i = document.createElement("i")
+                        i.classList.add("fa-solid", "fa-exclamation-triangle")
+                        cont2.appendChild(i)
+                        i.setAttribute("title", "Password Incorrect")
+                        password.focus()
+                    }
+                }
+                else{
+                    
+                    const i = document.createElement("i")
+                    i.classList.add("fa-solid", "fa-exclamation-triangle")
+                    cont1.appendChild(i)
+                    i.setAttribute("title", "Username Incorrect")
+                    username.focus()
+                }
+
+                
+            }
+        }
+
+        const signupValidate = (username, email, password, confirmPass, cont1, cont2, cont3, cont4) => {
+            if(username.value == ""){
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                cont1.appendChild(i)
+                username.focus()
+                i.setAttribute("title", "Username required")
+            }
+            else if(email.value == ""){
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                cont2.appendChild(i)
+                email.focus()
+                i.setAttribute("title", "Username required")
+            }
+            else if(password.value == ""){
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                cont3.appendChild(i)
+                password.focus()
+                i.setAttribute("title", "Username required")
+            }
+            else if(confirmPass.value == ""){
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-exclamation-triangle")
+                cont4.appendChild(i)
+                confirmPass.focus()
+                i.setAttribute("title", "Username required")
+            }
+            else{
+                alert("did it!")
+            }
+        }
+
+
+
 
     </script>
     
