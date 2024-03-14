@@ -446,6 +446,8 @@
         const backToTop = document.querySelector(".back-to-top");
         const searchInput = document.querySelector(".search-section .content input");
         const searchBtn = document.querySelector(".search-section .content button");
+        const cards = document.querySelectorAll(".cards .card")
+
         
 
 
@@ -506,7 +508,13 @@
             }
         })
         
-
+        // redirect the page when the card is clicked
+        for(i=0; i <= cards.length - 1; i++){
+            cards[i].style.cursor = "pointer"
+            cards[i].addEventListener("click", ()=>{
+                window.location.href="../single-blog/single-blog.html"
+            })
+        }
     </script>
 
 
