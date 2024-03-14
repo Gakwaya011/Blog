@@ -1,0 +1,1249 @@
+
+/* overall css */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --dark-color: #1C2120; 
+    --light-color: #fff;
+    --red-color: #ff3131;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-color);   
+    color: var(--light-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+
+/* ------------------navbar style-------------------- */
+
+/* ------------------light navbar style-------------------- */
+nav.light{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: var(--light-color);
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid var(--light-color);
+    padding: 10px 50px;
+    width: 100vw;
+    transition: .5s ease;
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
+    z-index: 1000;
+    min-width: 100%;
+}
+
+nav.light .logo{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+}
+
+nav.light .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+nav.light ul{
+    display: flex;
+    align-items: center;
+}
+
+nav.light ul li{
+    margin: 0 10px;
+    color: var(--dark-color);
+}
+
+nav.light ul li i.fa-search{
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+nav.light ul li i.fa-search:hover{
+    color: var(--red-color);
+}
+
+nav.light ul li a{
+    color: var(--dark-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+nav.light ul li a:not(li:last-child a):hover{
+    color: var(--red-color);
+}
+
+nav.light ul li a:not(li:last-child a)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+nav.light ul li a:not(li:last-child a):hover::after{
+    width: 100%;
+    float: right;
+}
+
+nav.light ul li:last-child a{
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.light ul li a i{
+    margin: 0px 5px;
+    font-size: 15px;
+}
+
+
+
+
+/* ------------------dark navbar style-------------------- */
+nav.dark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: var(--dark-color);
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid var(--dark-color);
+    padding: 10px 50px;
+    width: 100vw;
+    transition: .5s ease;
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
+    z-index: 1000;
+}
+
+nav.dark .logo{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 1px solid var(--dark-color);
+    border-radius: 50%;
+}
+
+nav.dark .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+nav.dark ul{
+    display: flex;
+    align-items: center;
+}
+
+nav.dark ul li{
+    margin: 0 10px;
+    color: var(--dark-color);
+}
+
+nav.dark ul li i.fa-search{
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--light-color);
+}
+
+nav.dark ul li i.fa-search:hover{
+    color: var(--red-color);
+}
+
+nav.dark ul li a{
+    color: var(--light-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+nav.dark ul li a:not(li:last-child a):hover{
+    color: var(--red-color);
+}
+
+nav.dark ul > li a:not(li:last-child a)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+nav.dark ul li a:not(li:last-child a):hover::after{
+    width: 100%;
+    float: right;
+}
+
+nav.dark ul li:last-child a{
+    background: var(--light-color);
+    color: var(--dark-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.dark ul li a i{
+    margin: 0px 5px;
+    font-size: 15px;
+}
+
+
+
+
+
+/* ------------------styles for active class-------------------- */
+nav ul li a#active{
+    color: var(--red-color);
+}
+
+nav.dark ul li a#active::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+/* ------------------styles for genres dropdown-------------------- */
+nav ul li.dropdown{
+    position: relative;
+}
+
+nav.light ul.dropdown-menu{
+    display: block;
+    top: 100%;
+    left: -20px;
+    position: absolute;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.dark ul.dropdown-menu{
+    display: block;
+    top: 100%;
+    left: -20px;
+    position: absolute;
+    background-color: var(--dark-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav ul.links li ul.dropdown-menu li a{
+    margin: 10px 0;
+    display: block;
+}
+
+nav ul.links li ul.dropdown-menu li a:hover{
+    color: var(--red-color);
+}
+
+nav ul.links li ul.dropdown-menu li a::after{
+    display: none;
+    width: 0;
+}
+
+nav.light ul.dropdown-menu li:last-child a{
+    background: none;
+    color: var(--dark-color);
+    padding: 0;
+}
+
+nav.dark ul.dropdown-menu li:last-child a{
+    background: none;
+    color: var(--light-color);
+    padding: 0;
+}
+
+nav ul li.dropdown:hover .dropdown-menu{
+    opacity: 1;
+    z-index: 10;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+
+
+/* styles for menu */
+nav.dark .menu{
+    display: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+nav.light .menu{
+    display: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+nav.light .menu i{
+    color: var(--dark-color);
+}
+
+
+nav.light .menu .sidebar{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    height: fit-content;
+    background: var(--light-color);
+    width: 300px;
+    padding: 20px;
+    z-index: 100;
+    transition: 0.5s ease;
+    transform: translateX(-300%);
+}
+
+nav.dark .menu .sidebar{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    height: fit-content;
+    background: var(--dark-color);
+    width: 300px;
+    padding: 20px;
+    z-index: 100;
+    transition: 0.5s ease;
+    transform: translateX(-300%);
+}
+
+nav.light .menu .sidebar > a{
+    color: var(--dark-color);
+    display: block;
+    padding: 30px 10px;
+    transition: 0.5s ease;
+}
+
+nav.dark .menu .sidebar > a{
+    color: var(--light-color);
+    display: block;
+    padding: 30px 10px;
+    transition: 0.5s ease;
+}
+
+nav .menu .sidebar a:hover{
+    color: var(--red-color);
+    border-right: 2px solid var(--red-color)
+}
+
+nav .menu .sidebar a:hover i{
+    color: var(--red-color);
+}
+
+nav .menu .sidebar a i{
+    margin-left: 5px;
+    font-size: 25px;
+    padding: 0 30px;
+}
+
+nav .menu .sidebar a i.fa-angle-down{
+    padding: 0;
+    font-size: 18px;
+}
+
+nav .menu .sidebar a.dropdown{
+    position: relative;
+}
+
+nav.light .menu .sidebar .dropdown-content{
+    position: absolute;
+    top: 5%;
+    left: 60px;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.dark .menu .sidebar .dropdown-content{
+    position: absolute;
+    top: 5%;
+    left: 60px;
+    background-color: var(--dark-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.light .menu .sidebar .dropdown-content a{
+    color: var(--dark-color);
+    font-size: 18px;
+    display: block;
+    margin: 15px;
+}
+
+nav.dark .menu .sidebar .dropdown-content a{
+    color: var(--light-color);
+    font-size: 18px;
+    display: block;
+    margin: 10px;
+}
+
+
+/* main shit  */
+
+main{
+    min-width: 100%;
+}
+
+.header{
+    background: url("https://www.linearity.io/blog/content/images/2022/03/610963083219da6a0a00ccb6_Cover-Dark-2.png") no-repeat center center/cover;
+    height: 95vh;
+    width: 100vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 50px;
+    margin-bottom: 50px;
+}
+
+.header .header-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main .header h1{
+    font-size: 3rem;
+    margin: 0 0 40px;
+}
+
+main .header h4{
+    width: 55%;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+main .header .buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    width: 55%;
+}
+
+main .header .buttons button{
+    border: 1px solid var(--red-color);
+    color: var(--light-color);
+    background: none;
+    padding: 10px 40px;
+    margin: 0 10px;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    background: var(--red-color);
+}
+
+main .header .buttons button:hover{
+    background: var(--red-color);
+}
+
+main .header .buttons button:last-child{
+    border-color: var(--light-color);
+    background: none;
+}
+
+main .header .buttons button:last-child:hover{
+    background: var(--light-color);
+    color: var(--dark-color);
+}
+
+
+/* ----------- this styles are for search input----------------- */
+
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+    background: var(--dark-color);
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    padding: 20px 0 10px;
+    transform: translateY(-300%);
+    position: fixed;
+    top: 10%;
+    z-index: 20;
+}
+
+.search .search-input input{
+    background: none;
+    border: 1px solid var(--light-color);
+    width: 100%;
+    color: var(--light-color);
+    padding: 10px 20px;
+    outline: none;
+    font-size: 18px;
+    border-radius: 20px 0 0 20px;
+}
+
+.search .search-button button{
+    background: var(--light-color);
+    color: var(--dark-color);
+    outline: none;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.5s ease;
+}
+
+
+/* ------------ media screen for the above shit------------- */
+
+
+/* ------------ media screen for the navbar------------- */
+@media screen and (max-width: 850px){
+
+    nav.light ul, nav.dark ul{
+        display: none;
+    }
+
+    nav.light .menu, nav.dark .menu{
+        display: block;
+        margin: 0 10px;
+    }
+}
+
+
+@media screen and (max-width: 620px){
+    .header-content{
+        width: 100%;
+        align-items: center;
+    }
+
+    .header{
+        padding: 10px;
+    }
+
+    .header .header-content h1{
+        text-align: center;
+    }
+}
+
+
+
+
+/* ------------------ blogs style now------------------- */
+
+
+.blog{
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 100px;
+}
+
+.blog .blogs-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog .blogs-title h1{
+    font-size: 3rem;
+    margin: 0 0 20px;
+}
+
+.blog .blogs-title h2{
+    font-size: 25px;
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+
+.blog .blogs-title h2 span{
+    color: var(--red-color);
+    text-transform: capitalize;
+    padding: 5px;
+    font-weight: 600;
+    position: relative;
+}
+
+.blog .blogs-title h2 span::before{
+    content: "Web Developer";
+    color: var(--main-color);
+    animation: words 20s infinite;
+}
+
+.blog .blogs-title h2 span::after{
+    content: "";
+    background-color: var(--dark-color);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 80%;
+    border-left: 3px solid --bg-color;
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left: 3px solid var(--red-color);
+    }
+}
+
+@keyframes words{
+    0%, 20%{
+        content: "Find";
+    }
+
+    21%, 40%{
+        content: "blog";
+    }
+
+    41%, 60%{
+        content: "create";
+    }
+
+    61%, 80%{
+        content: "share";
+    }
+
+    81%, 100%{
+        content: "discover";
+    }
+}
+@keyframes typing {
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+    }
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85%,
+    100%{
+        width: calc(100% + 8px);
+    }
+}
+
+
+.blog .blogs-title h3{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.blog .blogs-title h3 span{
+    color: var(--red-color);
+    text-transform: capitalize;
+    padding: 5px;
+    font-weight: 600;
+}
+
+.blog .blogs-title h3 i{
+    padding: 5px;
+    font-weight: 600;
+}
+
+.blog .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+.blog .blog-samples{
+    flex: 0 1 900px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--light-color);
+    border-radius: 10px;
+}
+
+.blog .blog-samples.static{
+    flex: 1 1 50px;
+}
+
+.blog .blog-samples.static .blog-image{
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    transition: .5s ease;
+}
+.blog .blog-samples.static .blog-image::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--dark-color), transparent);
+    z-index: 10;
+    backdrop-filter: blur(0.5px);
+}
+
+.blog .blog-samples.static .blog-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s ease;
+}
+
+.blog .blog-samples.static .blog-image .images{
+    display: flex;
+    width: fit-content;
+    animation: image 40s linear infinite;
+    transition: 2s ease;
+}
+
+@keyframes image{
+    0%, 20%{
+        transform: translateX(0);
+    }
+    21%, 40%{
+        transform: translateX(-100%);
+    }
+    41%, 60%{
+        transform: translateX(-200%);
+    }
+    61%, 80%{
+        transform: translateX(-300%);
+    }
+    81%, 100%{
+        transform: translateX(-400%);
+    }
+}
+
+
+.blog .blog-samples .blog-sample{
+    flex: 1 1 200px;
+    background: var(--dark-color);
+    padding: 10px;
+    border-radius: 20px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.blog .blog-samples .blog-sample .blog-image{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    transition: .5s ease;
+}
+
+.blog .blog-samples .blog-sample .blog-image::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--dark-color), transparent);
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.blog .blog-samples .blog-sample:hover .blog-image::before{
+    opacity: 1;
+}
+
+.blog-image h2.popular{
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.blog .blog-samples .blog-sample:hover .blog-image h2.popular{
+    opacity: 1;
+}
+
+.blog .blog-samples .blog-sample .blog-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.top-ranking{
+    margin: 10px 10px 0px 50px;
+    font-weight: 600;
+}
+
+.popular{
+    font-weight: 600;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#popular{
+    opacity: 1;
+}
+h2#popular{
+    bottom: 40px;
+}
+
+button#popular{
+    padding: 5px 10px;
+    border: 1px solid var(--red-color);
+    border-radius: 20px;
+    outline: none;
+    color: var(--light-color);
+    background: var(--red-color);
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+button#popular:hover{
+    background: transparent;
+    color: var(--red-color);
+}
+
+
+
+
+
+
+
+
+
+/* ----------------desc---------------- */
+
+.desc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 100px 30px;
+}
+
+.desc > h1{
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: 50%;
+    flex: 1 1 700px;
+}
+
+.desc .stats{
+    flex: 1 1 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 50px 0 0;
+}
+
+.desc .stats .stat{
+    margin: 30px 0;
+    border-left: 3px solid;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.desc .stats .stat h1{
+    color: var(--red-color);
+}
+
+.desc .stats .stat h3{
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: capitalize;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+/* ----------------product styles---------------- */
+.product{
+    background: url("https://cdn.openart.ai/uploads/image_j-vL0gCt_1691962234797_512.webp") no-repeat center center/cover;
+    width: 100%;
+    overflow: hidden;
+}
+
+.product .title{
+    padding: 100px 50px 50px;
+    width: 60%;
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--light-color);
+}
+
+@media screen and (max-width: 1000px){
+    .product .title{
+        width: 100%;
+    }
+    
+}
+
+.product .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 10px 30px 50px;
+}
+
+.product .content > div{
+    flex: 1 1 300px;
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.product .content > div:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.product .content > div h1{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 20px 10px;
+}
+
+.product .content > div h3{
+    font-size: 20px;
+    font-weight: 100;
+    text-transform: capitalize;
+    opacity: 0.5;
+    padding: 0 30px;
+}
+
+.product .content > div h1 i{
+    color: var(--red-color);
+    margin: 0 10px;
+}
+
+.product .content > div p{
+    font-size: 15px;
+    font-weight: 100;
+    text-transform: capitalize;
+    padding: 0 30px;
+}
+
+.product .content > div a{
+    color: var(--light-color);
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 30px 30px 0;
+    display: block;
+    transition: .5s ease;
+}
+
+.product .content > div a i{
+    margin: 0 0 0 5px;
+    font-size: 15px;
+}
+
+.product .content > div a:hover{
+    color: var(--red-color);
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------footer---------------- */
+
+footer{
+    background: var(--dark-color);
+    padding: 0 0 20px;
+    text-align: center;
+    border-top: 1px solid var(--light-color);
+    margin-top: 50px;
+}
+
+footer .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 30px;
+}
+
+footer .content .logo{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid var(--light-color);
+}
+
+footer .content .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer .content h2{
+    font-size: 22px;
+    margin: 0 0 20px;
+    text-transform: capitalize;
+}
+
+footer .terms a, footer .quick-links a{
+    color: var(--light-color);
+    font-size: 16px;
+    margin: 14px;
+    text-transform: capitalize;
+    display: block;
+    text-align: left;
+}
+
+footer .subscribe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .subscribe input{
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    display: block;
+    margin: 10px;
+    width: 100%;
+}
+
+footer .subscribe button{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px;
+    background: var(--red-color);
+    color: var(--light-color);
+    font-size: 18px;
+}
+
+footer .copyright{
+    border-top: 1px solid var(--light-color);
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 0;
+    font-size: 16px;
+    color: var(--light-color);
+}
+
+
+/* ----------- to top button---------------- */
+
+button.back-to-top{
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    background: var(--red-color);
+    color: var(--light-color);
+    font-size: 22px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+
+
+
+/* -------------these are classes for transition of the sliding images--------- */
+.shifted {
+    transform: translateX(100%);
+    transition: .5s ease;
+}
+
+.normal{
+    transform: translateX(0);
+    transition: .5s ease;
+}
+
+
+
+
+
+
+/* ------------------------scrollbar--------------------- */
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--red-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--dark-color);
+    width: 50px;
+}
+
+
+
+
+/* ------------------------cookies--------------------- */
+
+.cookies{
+    position: fixed;
+    width: fit-content;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--dark-color);
+    padding: 30px 30px 10px;
+    background: var(--light-color);
+    box-shadow: 0 -2px 16px rgba(0,0,0,.1);
+    transition: 1s ease;
+    border-radius: 5px;
+    z-index: 10000;
+}
+
+.cookies h3{
+    margin: 0 auto;
+    font-size: 30px;
+    width: 100%;
+}
+
+.cookies p{
+    margin: 10px auto;
+    padding: 0 10px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.cookies .buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 12px 0 0;
+}
+
+.cookies button{
+    padding: 10px 25px;
+    background: var(--dark-color);
+    color: var(--light-color);
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s ease;
+    width: 100%;
+}
+
+.cookies button.decline{
+    background: var(--light-color);
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+}
+
+.cookies button.decline:hover{
+    background: var(--red-color);
+    color: var(--light-color);
+}
+
+.cookies .close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    color: var(--red-color);
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+

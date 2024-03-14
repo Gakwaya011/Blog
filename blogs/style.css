@@ -1,0 +1,944 @@
+
+/* overall css */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --dark-color: #1C2120; 
+    --light-color: #fff;
+    --red-color: #ff3131;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-color);   
+    color: var(--light-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+
+/* ------------------navbar style-------------------- */
+
+/* ------------------light navbar style-------------------- */
+nav.light{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: var(--light-color);
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid var(--light-color);
+    padding: 10px 50px;
+    width: 100vw;
+    transition: .5s ease;
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
+    z-index: 1000;
+    min-width: 100%;
+}
+
+nav.light .logo{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+}
+
+nav.light .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+nav.light ul{
+    display: flex;
+    align-items: center;
+}
+
+nav.light ul li{
+    margin: 0 10px;
+    color: var(--dark-color);
+}
+
+nav.light ul li i.fa-search{
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+nav.light ul li i.fa-search:hover{
+    color: var(--red-color);
+}
+
+nav.light ul li a{
+    color: var(--dark-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+nav.light ul li a:not(li:last-child a):hover{
+    color: var(--red-color);
+}
+
+nav.light ul li a:not(li:last-child a)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+nav.light ul li a:not(li:last-child a):hover::after{
+    width: 100%;
+    float: right;
+}
+
+nav.light ul li:last-child a{
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.light ul li a i{
+    margin: 0px 5px;
+    font-size: 15px;
+}
+
+
+
+
+/* ------------------dark navbar style-------------------- */
+nav.dark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: var(--dark-color);
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid var(--dark-color);
+    padding: 10px 50px;
+    width: 100vw;
+    transition: .5s ease;
+    position: sticky;
+    top: 0;
+    flex-wrap: wrap;
+    z-index: 1000;
+}
+
+nav.dark .logo{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 1px solid var(--dark-color);
+    border-radius: 50%;
+}
+
+nav.dark .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+nav.dark ul{
+    display: flex;
+    align-items: center;
+}
+
+nav.dark ul li{
+    margin: 0 10px;
+    color: var(--dark-color);
+}
+
+nav.dark ul li i.fa-search{
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--light-color);
+}
+
+nav.dark ul li i.fa-search:hover{
+    color: var(--red-color);
+}
+
+nav.dark ul li a{
+    color: var(--light-color);
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+nav.dark ul li a:not(li:last-child a):hover{
+    color: var(--red-color);
+}
+
+nav.dark ul > li a:not(li:last-child a)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+nav.dark ul li a:not(li:last-child a):hover::after{
+    width: 100%;
+    float: right;
+}
+
+nav.dark ul li:last-child a{
+    background: var(--light-color);
+    color: var(--dark-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.dark ul li a i{
+    margin: 0px 5px;
+    font-size: 15px;
+}
+
+
+
+
+
+/* ------------------styles for active class-------------------- */
+nav ul li a#active{
+    color: var(--red-color);
+}
+
+nav.dark ul li a#active::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: var(--red-color);
+    display: block;
+    transition: 0.5s ease;
+    margin-top: 5px;
+}
+
+/* ------------------styles for genres dropdown-------------------- */
+nav ul li.dropdown{
+    position: relative;
+}
+
+nav.light ul.dropdown-menu{
+    display: block;
+    top: 100%;
+    left: -20px;
+    position: absolute;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.dark ul.dropdown-menu{
+    display: block;
+    top: 100%;
+    left: -20px;
+    position: absolute;
+    background-color: var(--dark-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 10px 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav ul.links li ul.dropdown-menu li a{
+    margin: 10px 0;
+    display: block;
+}
+
+nav ul.links li ul.dropdown-menu li a:hover{
+    color: var(--red-color);
+}
+
+nav ul.links li ul.dropdown-menu li a::after{
+    display: none;
+    width: 0;
+}
+
+nav.light ul.dropdown-menu li:last-child a{
+    background: none;
+    color: var(--dark-color);
+    padding: 0;
+}
+
+nav.dark ul.dropdown-menu li:last-child a{
+    background: none;
+    color: var(--light-color);
+    padding: 0;
+}
+
+nav ul li.dropdown:hover .dropdown-menu{
+    opacity: 1;
+    z-index: 10;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+
+
+/* styles for menu */
+nav.dark .menu{
+    display: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+nav.light .menu{
+    display: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+nav.light .menu i{
+    color: var(--dark-color);
+}
+
+
+nav.light .menu .sidebar{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    height: fit-content;
+    background: var(--light-color);
+    width: 300px;
+    padding: 20px;
+    z-index: 100;
+    transition: 0.5s ease;
+    transform: translateX(-300%);
+}
+
+nav.dark .menu .sidebar{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    height: fit-content;
+    background: var(--dark-color);
+    width: 300px;
+    padding: 20px;
+    z-index: 100;
+    transition: 0.5s ease;
+    transform: translateX(-300%);
+}
+
+nav.light .menu .sidebar > a{
+    color: var(--dark-color);
+    display: block;
+    padding: 30px 10px;
+    transition: 0.5s ease;
+}
+
+nav.dark .menu .sidebar > a{
+    color: var(--light-color);
+    display: block;
+    padding: 30px 10px;
+    transition: 0.5s ease;
+}
+
+nav .menu .sidebar a:hover{
+    color: var(--red-color);
+    border-right: 2px solid var(--red-color)
+}
+
+nav .menu .sidebar a:hover i{
+    color: var(--red-color);
+}
+
+nav .menu .sidebar a i{
+    margin-left: 5px;
+    font-size: 25px;
+    padding: 0 30px;
+}
+
+nav .menu .sidebar a i.fa-angle-down{
+    padding: 0;
+    font-size: 18px;
+}
+
+nav .menu .sidebar a.dropdown{
+    position: relative;
+}
+
+nav.light .menu .sidebar .dropdown-content{
+    position: absolute;
+    top: 5%;
+    left: 60px;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.dark .menu .sidebar .dropdown-content{
+    position: absolute;
+    top: 5%;
+    left: 60px;
+    background-color: var(--dark-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    z-index: -10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+nav.light .menu .sidebar .dropdown-content a{
+    color: var(--dark-color);
+    font-size: 18px;
+    display: block;
+    margin: 15px;
+}
+
+nav.dark .menu .sidebar .dropdown-content a{
+    color: var(--light-color);
+    font-size: 18px;
+    display: block;
+    margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* ------------------------scrollbar--------------------- */
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--red-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--dark-color);
+    width: 50px;
+}
+
+
+
+
+
+/* ----------- to top button---------------- */
+
+button.back-to-top{
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    background: var(--red-color);
+    color: var(--light-color);
+    font-size: 22px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
+    transition: .5s ease;
+    z-index: 1000;
+}
+
+
+
+
+/* ------------ media screen for the above shit------------- */
+
+
+/* ------------ media screen for the navbar------------- */
+@media screen and (max-width: 850px){
+
+    nav.light ul, nav.dark ul{
+        display: none;
+    }
+
+    nav.light .menu, nav.dark .menu{
+        display: block;
+        margin: 0 10px;
+    }
+}
+
+
+@media screen and (max-width: 620px){
+    .header-content{
+        width: 100%;
+        align-items: center;
+    }
+
+    .header{
+        padding: 10px;
+    }
+
+    .header .header-content h1{
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+/* ----------------main---------------- */
+
+/* ----------------search section---------------- */
+
+.search-section{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.search-section .content{
+    width: 60%;
+    text-align: center;
+    font-size: 25px;
+    border: 1px solid var(--light-color);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-section input{
+    width: 100%;
+    padding: 10px 50px 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.search-section button{
+    padding: 7px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-radius: 5px;
+    background: #c5c5c5;
+    color: var(--light-color);
+    cursor: not-allowed;
+    transition: .5s ease;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 340px){
+    .search-section .content{
+        width: 90%;
+    }
+    
+}
+
+
+
+
+
+
+
+/* ----------------blogs---------------- */
+main .header{
+    background: url("https://neilpatel.com/wp-content/uploads/2017/09/blog-post-image-guide.jpg") no-repeat center center/cover;
+    padding: 50px 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+main .header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+main .header .header-text{
+    text-align: center;
+    color: var(--light-color);
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+    z-index: 10;
+    margin: 100px auto;
+}
+
+main .header .header-text h1{
+    font-size: 3rem;
+    margin: 0 0 20px;
+}
+
+main .header .header-text h1 span{
+    background: var(--red-color);
+    padding: 5px 10px;
+    margin: 0;
+    border-radius: 5px;
+}
+
+main .header .header-text p{
+    width: 55%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+main .header .header-text p i{
+    font-size: 1rem;
+    margin: 0 10px 0 0;
+    background: var(--red-color);
+    border-radius: 50%;
+    padding: 5px 7px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------templates---------------- */
+.templates{
+    padding: 0 20px;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    margin: 100px 0 30px;
+    text-transform: capitalize;
+}
+
+.title i{
+    color: var(--red-color);
+    font-size: 25px;
+}
+
+.title span{
+    color: var(--red-color);
+    font-size: 25px;
+}
+
+.templates .genres{
+    display: flex;
+    justify-content: space-between;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 70%;
+    margin: 20px auto 40px;
+    padding: 10px;
+    gap: 20px;
+    align-items: center;
+}
+
+.genres::-webkit-scrollbar{
+    height: 3px;
+}
+
+.genres::-webkit-scrollbar-thumb{
+    background: #918f8f;
+    border-radius: 10px;
+}
+
+.genres::-webkit-scrollbar-track{
+    background: var(--dark-color);
+}
+
+.templates .genres a{
+    color: var(--light-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: .5s ease;
+    border: 1px solid var(--light-color);
+    border-radius: 20px;
+}
+
+.templates .genres a:hover{
+    color: var(--red-color);
+    border: 1px solid var(--red-color);
+}
+
+.templates .content .cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 0 100px;
+}
+
+.templates .content .cards .card{
+    flex: 1 1 200px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.templates .content .cards .card .image{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    transition: .5s ease;
+    position: relative;
+}
+
+.templates .content .cards .card .image::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--dark-color), transparent);
+    z-index: 1;
+    transition: .5s ease;
+}
+
+.templates .content .cards .card .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s ease;
+}
+
+.templates .content .cards .card .text{
+    text-align: center;
+    color: var(--light-color);
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.templates .content .cards .card .text h2{
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.templates .content .cards .card .text p{
+    margin: 10px 0;
+    font-size: 10px;
+}
+
+.templates .content .cards .card .text p span{
+    color: var(--red-color);
+}
+
+.templates .content .cards .card .options{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .5s ease;
+    z-index: 0;
+    background: var(--red-color);
+    color: var(--light-color);
+}
+
+.templates .content .cards .card .options i{
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.templates .content .cards .card:hover .options{
+    opacity: 1;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+/* ----------------reasons---------------- */
+.reasons{
+    margin: 0;
+    padding: 0;
+}
+
+.reasons .content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 50px 0;
+    width: 100%;
+}
+
+.reasons .content .card{
+    flex: 0 1 500px;
+    display: flex;
+}
+
+.reasons .content .card i{
+    font-size: 50px;
+    padding: 10px 30px 0 0;
+}
+
+.reasons .content .card .text h2{
+    color: var(--red-color);
+    margin-bottom: 10px;
+}
+
+.reasons .content .card .text p{
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------footer---------------- */
+
+footer{
+    background: var(--dark-color);
+    padding: 0 0 20px;
+    text-align: center;
+    border-top: 1px solid var(--light-color);
+    margin-top: 50px;
+}
+
+footer .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 30px;
+}
+
+footer .content .logo{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px solid var(--light-color);
+}
+
+footer .content .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer .content h2{
+    font-size: 22px;
+    margin: 0 0 20px;
+    text-transform: capitalize;
+}
+
+footer .terms a, footer .quick-links a{
+    color: var(--light-color);
+    font-size: 16px;
+    margin: 14px;
+    text-transform: capitalize;
+    display: block;
+    text-align: left;
+}
+
+footer .subscribe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .subscribe input{
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    display: block;
+    margin: 10px;
+    width: 100%;
+}
+
+footer .subscribe button{
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px;
+    background: var(--red-color);
+    color: var(--light-color);
+    font-size: 18px;
+}
+
+footer .copyright{
+    border-top: 1px solid var(--light-color);
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0 0;
+    font-size: 16px;
+    color: var(--light-color);
+}
