@@ -678,7 +678,7 @@
             else{
                 if(username.value == "Admin" || username.value == "admin"){
                     if(password.value == "Admin" || password.value == "admin"){
-                        alert("did it!")
+                        window.location.href = "../index.html"
                     }
                     else{
                         const prevI = cont2.querySelector("i")
@@ -735,9 +735,14 @@
                 i.setAttribute("title", "Username required")
             }
             else{
-                alert("did it!")
+                window.location.href = "../index.html"
             }
         }
+
+        backButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.href = "../index.html"
+        })
 
 
 
